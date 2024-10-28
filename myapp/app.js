@@ -61,7 +61,7 @@ const initializeDBAndServer = async () => {
     response.send({ id: todoId,name:name,status: "Incomplete" });
   });
 
-  app.put("/todos/:todoId/", async (request, response) => {
+  app.put("/todos/:todoId", async (request, response) => {
     const { todoId } = request.params;
     const todoDetails = request.body;
     const {
@@ -81,7 +81,7 @@ const initializeDBAndServer = async () => {
   });
 
   
-  app.delete("/todos/:todoId/", async (request, response) => {
+  app.delete("/todos/:todoId", async (request, response) => {
     const { todoId } = request.params;
     const deleteTodoQuery = `
       DELETE FROM
