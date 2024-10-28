@@ -77,7 +77,7 @@ const initializeDBAndServer = async () => {
         Id = '${todoId}';`;
 
     await db.run(updatetodoQuery);
-    response.send("Todo Updated Successfully");
+    response.send( {updateStatus: "Todo Updated Successfully"} );
   });
 
   
@@ -89,5 +89,5 @@ const initializeDBAndServer = async () => {
       WHERE
         Id = '${todoId}';`;
     await db.run(deleteTodoQuery);
-    response.send("Todo Deleted Successfully");
+    response.send({deleteStatus: "Todo Deleted Successfully"});
   });
