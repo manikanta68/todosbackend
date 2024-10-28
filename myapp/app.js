@@ -88,6 +88,6 @@ const initializeDBAndServer = async () => {
         todos
       WHERE
         Id = '${todoId}';`;
-    await db.run(deleteTodoQuery);
-    response.send({deleteStatus: "Todo Deleted Successfully"});
+    const deleteResponse = await db.run(deleteTodoQuery);
+    response.send({deleteStatus: deleteResponse});
   });
