@@ -32,7 +32,6 @@ const initializeDBAndServer = async () => {
 
 
   app.get("/todos/", async (request, response) => {
-    console.log("ok")
     const getTodosQuery = `
       SELECT
         *
@@ -51,7 +50,7 @@ const initializeDBAndServer = async () => {
         todos (Id,name,status)
       VALUES
         (
-           ${uuidv4()},
+           '${uuidv4()}',
           '${name}',
            '${status}'
 
