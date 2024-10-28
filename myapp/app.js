@@ -3,6 +3,7 @@ const path = require("path")
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const cors = require("cors")
+const { v4: uuidv4 } = require('uuid');
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -43,14 +44,14 @@ const initializeDBAndServer = async () => {
 
   app.post("/todos/", async (request, response) => {
     const todoDetails = request.body;
-    const {id,name,status
+    const {name,status
     } = todoDetails;
     const addtodoQuery = `
       INSERT INTO
         todos (Id,name,status)
       VALUES
         (
-           ${id},
+           ${uuidv4()},
           '${name}',
            '${status}'
 
