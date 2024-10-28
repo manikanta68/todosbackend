@@ -58,7 +58,7 @@ const initializeDBAndServer = async () => {
   
     const dbResponse = await db.run(addtodoQuery);
     const todoId = dbResponse.lastID;
-    response.send({ todoId: todoId });
+    response.send({ todoId: todoId,name,status: "Incomplete" });
   });
 
   app.put("/todos/:todoId/", async (request, response) => {
