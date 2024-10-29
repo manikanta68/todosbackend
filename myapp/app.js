@@ -34,13 +34,14 @@ const initializeDBAndServer = async () => {
   app.get("/todos/", async (request, response) => {
     const {
     search_q = "",
+    filter_by=""
   } = request.query;
     const getTodosQuery = `
       SELECT
         *
       FROM
         todos
-      WHERE  name LIKE '%${search_q}%'
+      WHERE  name LIKE '%${search_q}%' AND status LIKE '%${filter_by}%'
 ;`;
     const todosArray = await db.all(getTodosQuery);
     response.send(todosArray);
