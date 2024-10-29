@@ -32,11 +32,16 @@ const initializeDBAndServer = async () => {
 
 
   app.get("/todos/", async (request, response) => {
+    const {
+    search_q = "",
+  } = request.query;
     const getTodosQuery = `
       SELECT
         *
       FROM
-        todos;`;
+        todos
+      WHERE  title LIKE '%${search_q}%'
+;`;
     const todosArray = await db.all(getTodosQuery);
     response.send(todosArray);
   });
