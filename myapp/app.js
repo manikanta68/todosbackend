@@ -40,7 +40,7 @@ const initializeDBAndServer = async () => {
         *
       FROM
         todos
-      WHERE  title LIKE '%${search_q}%'
+      WHERE  name LIKE '%${search_q}%'
 ;`;
     const todosArray = await db.all(getTodosQuery);
     response.send(todosArray);
